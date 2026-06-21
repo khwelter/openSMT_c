@@ -226,7 +226,7 @@ SerialCommandBuildResult MarlinSerialProtocolAdapter::buildCommand(
 
         const int value = payload["state"].get<bool>() ? 1 : 0;
         std::ostringstream command;
-        command << "M114 P" << channel << " S" << value;
+        command << "M106 P" << channel << " S" << value;
         return {true, command.str(), ""};
     }
 
@@ -242,7 +242,7 @@ SerialCommandBuildResult MarlinSerialProtocolAdapter::buildCommand(
         }
 
         std::ostringstream command;
-        command << "M114 P" << channel << " S" << value;
+        command << "M106 P" << channel << " S" << value;
         return {true, command.str(), ""};
     }
 

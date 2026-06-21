@@ -147,6 +147,42 @@ void printUsage()
 {
     std::fprintf(stderr, "Usage: ./build/appActor -a <actorId> -v <value|on|off>\n");
     std::fprintf(stderr, "   or: ./build/appActor <actorId> <value|on|off>\n");
+    std::fprintf(stderr, "   or: ./build/appActor -?\n");
+}
+
+void printActors(const opensmt::config::AppConfig& appConfig)
+{
+    std::fprintf(stdout, "Available actors\n");
+    for (const auto& actor : appConfig.actors) {
+        if (!actor.allowedValues.empty()) {
+            std::string valuesText;
+            for (std::size_t i = 0; i < actor.allowedValues.size(); ++i) {
+                if (i > 0) {
+                    valuesText += ", ";
+                }
+                valuesText += std::to_string(actor.allowedValues[i]);
+                if (actor.allowedValues[i] == actor.offValue) {
+                    valuesText += "(off)";
+                } else if (actor.allowedValues[i] == actor.onValue) {
+                    valuesText += "(on)";
+                }
+            }
+            std::fprintf(stdout, "  %-12s  driver=%-10s  index=%d  values=[%s]\n",
+                actor.id.c_str(),
+                actor.hardwareDriverId.c_str(),
+                actor.index,
+                valuesText.c_str());
+        } else {
+            std::fprintf(stdout, "  %-12s  driver=%-10s  index=%d  range=%d..%d  off=%d  on=%d\n",
+                actor.id.c_str(),
+                actor.hardwareDriverId.c_str(),
+                actor.index,
+                actor.minValue,
+                actor.maxValue,
+                actor.offValue,
+                actor.onValue);
+        }
+    }
 }
 
 } // namespace
@@ -155,14 +191,21 @@ int main(int argc, char** argv)
 {
     std::string actorId;
     std::string valueText;
+    bool listActors = false;
 
-    if (argc == 3 && argv[1] != nullptr && argv[2] != nullptr) {
+    if (argc == 2 && argv[1] != nullptr && std::string(argv[1]) == "-?") {
+        listActors = true;
+    } else if (argc == 3 && argv[1] != nullptr && argv[2] != nullptr) {
         actorId = argv[1];
         valueText = argv[2];
     } else {
         int index = 1;
         while (index < argc) {
             const std::string option = argv[index];
+            if (option == "-?") {
+                listActors = true;
+                break;
+            }
             if (option == "-a") {
                 if (index + 1 >= argc || argv[index + 1] == nullptr) {
                     printUsage();
@@ -188,16 +231,21 @@ int main(int argc, char** argv)
         }
     }
 
-    if (actorId.empty() || valueText.empty()) {
-        printUsage();
-        return 1;
-    }
-
     opensmt::config::ConfigLoader configLoader;
     opensmt::config::AppConfig appConfig;
     std::string errorMessage;
     if (!configLoader.load("config/config.json", appConfig, errorMessage)) {
         std::fprintf(stderr, "appActor: config load failed: %s\n", errorMessage.c_str());
+        return 1;
+    }
+
+    if (listActors) {
+        printActors(appConfig);
+        return 0;
+    }
+
+    if (actorId.empty() || valueText.empty()) {
+        printUsage();
         return 1;
     }
 
