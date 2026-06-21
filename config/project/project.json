@@ -1,0 +1,10 @@
+{
+  "projectName": "openSMT_c",
+  "logLevel": "info",
+  "posCalib": { "x": 262.861, "y": 121.777, "z": 0.0 },
+  "posCalibSec": { "x": 0.0, "y": 0.0, "z": 0.0 },
+  "posPark": { "x": 250.0, "y": 250.0, "z": 0.0 },
+  "posCamBot": { "x": 258.188, "y": 50.598, "z": 0.0 },
+  "posDiscard": { "x": 0.0, "y": 0.0, "z": 0.0 },
+  "posChange": { "x": 0.0, "y": 0.0, "z": 0.0 }
+}

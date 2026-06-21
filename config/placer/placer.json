@@ -1,0 +1,7 @@
+{
+  "algorithm": "simple-grid",
+  "includes": {
+    "grid": "grid.json",
+    "cost": "cost.json"
+  }
+}

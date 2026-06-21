@@ -1,0 +1,5 @@
+{
+  "wireLengthWeight": 1.0,
+  "overlapPenaltyWeight": 10.0,
+  "thermalPenaltyWeight": 0.25
+}

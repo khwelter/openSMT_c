@@ -1,0 +1,46 @@
+[
+  {
+    "id": "marlinXY",
+    "driverType": "serial",
+    "enabled": true,
+    "portName": "marlinXY",
+    "baudRate": 115200,
+    "dataBits": 8,
+    "parity": "N",
+    "stopBits": 1,
+    "serialProtocol": "marlin-gcode",
+    "defaultRotateSpeed": 1200,
+    "serialResponseTimeoutMs": 30000
+  },
+  {
+    "id": "marlinAB",
+    "driverType": "serial",
+    "enabled": true,
+    "portName": "marlinAB",
+    "baudRate": 115200,
+    "dataBits": 8,
+    "parity": "N",
+    "stopBits": 1,
+    "serialProtocol": "marlin-gcode",
+    "defaultRotateSpeed": 1200,
+    "serialResponseTimeoutMs": 30000
+  },
+  {
+    "id": "marlinCD",
+    "driverType": "serial",
+    "enabled": true,
+    "portName": "marlinCD",
+    "baudRate": 115200,
+    "dataBits": 8,
+    "parity": "N",
+    "stopBits": 1,
+    "serialProtocol": "marlin-gcode",
+    "defaultRotateSpeed": 1200,
+    "serialResponseTimeoutMs": 30000
+  },
+  {
+    "id": "canMain",
+    "driverType": "can",
+    "enabled": false
+  }
+]

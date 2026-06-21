@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "includes": {
+    "project": "project/project.json",
+    "io": "io/io.json",
+    "placer": "placer/placer.json",
+    "runtime": "runtime/runtime.json"
+  }
+}

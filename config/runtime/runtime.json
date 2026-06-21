@@ -1,0 +1,9 @@
+{
+  "includes": {
+    "communication": "communication.json",
+    "modules": "modules.json",
+    "hardwareDrivers": "hardware-drivers.json",
+    "deviceDrivers": "device-drivers.json",
+    "actors": "actors.json"
+  }
+}

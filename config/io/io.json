@@ -1,0 +1,4 @@
+{
+  "inputBoardFile": "data/input/board.json",
+  "outputPlacementFile": "data/output/placement.json"
+}

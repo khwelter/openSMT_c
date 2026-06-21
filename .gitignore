@@ -1,0 +1,29 @@
+# Build output
+/build/
+
+# In-source CMake artifacts
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile
+/compile_commands.json
+
+# Generated/static libs and binaries from in-source builds
+/*.a
+/*.so
+/*.dylib
+/*.dll
+/*.exe
+/openSMT_c_app
+/app*
+
+# Editor and OS noise
+/.vscode/
+/.idea/
+*.swp
+*.swo
+*.tmp
+.DS_Store
+
+# Runtime logs
+*.log

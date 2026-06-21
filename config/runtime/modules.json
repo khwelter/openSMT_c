@@ -1,0 +1,17 @@
+[
+  {
+    "id": "comm-monitor-1",
+    "type": "communication-monitor",
+    "enabled": true
+  },
+  {
+    "id": "device-runtime-1",
+    "type": "device-driver-runtime",
+    "enabled": true
+  },
+  {
+    "id": "placer-1",
+    "type": "placer",
+    "enabled": true
+  }
+]

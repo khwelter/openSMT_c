@@ -1,0 +1,68 @@
+[
+  {
+    "id": "lightBot",
+    "driver": "marlinXY",
+    "deviceDriver": "ledBottom",
+    "index": 0,
+    "minValue": 0,
+    "maxValue": 1,
+    "offValue": 0,
+    "onValue": 1,
+    "allowedValues": [0, 1]
+  },
+  {
+    "id": "lightTop",
+    "driver": "marlinAB",
+    "deviceDriver": "ledTop",
+    "index": 1,
+    "minValue": 0,
+    "maxValue": 1,
+    "offValue": 0,
+    "onValue": 1,
+    "allowedValues": [0, 1]
+  },
+  {
+    "id": "vacA",
+    "driver": "marlinXY",
+    "deviceDriver": "vac1",
+    "index": 1,
+    "minValue": 0,
+    "maxValue": 255,
+    "offValue": 0,
+    "onValue": 255,
+    "allowedValues": [0, 255]
+  },
+  {
+    "id": "vacB",
+    "driver": "marlinXY",
+    "deviceDriver": "vac2",
+    "index": 2,
+    "minValue": 0,
+    "maxValue": 255,
+    "offValue": 0,
+    "onValue": 255,
+    "allowedValues": [0, 255]
+  },
+  {
+    "id": "vacC",
+    "driver": "marlinXY",
+    "deviceDriver": "vac3",
+    "index": 3,
+    "minValue": 0,
+    "maxValue": 255,
+    "offValue": 0,
+    "onValue": 255,
+    "allowedValues": [0, 255]
+  },
+  {
+    "id": "vacD",
+    "driver": "marlinXY",
+    "deviceDriver": "vac4",
+    "index": 4,
+    "minValue": 0,
+    "maxValue": 255,
+    "offValue": 0,
+    "onValue": 255,
+    "allowedValues": [0, 255]
+  }
+]

@@ -1,0 +1,17 @@
+[
+  { "id": "moveXY", "hardware": "marlinXY", "enabled": true },
+  { "id": "moveZ1", "hardware": "marlinAB", "enabled": true },
+  { "id": "moveZ2", "hardware": "marlinAB", "enabled": true },
+  { "id": "rotR1", "hardware": "marlinAB", "enabled": true },
+  { "id": "rotR2", "hardware": "marlinAB", "enabled": true },
+  { "id": "moveZ3", "hardware": "marlinCD", "enabled": true },
+  { "id": "moveZ4", "hardware": "marlinCD", "enabled": true },
+  { "id": "rotR3", "hardware": "marlinCD", "enabled": true },
+  { "id": "rotR4", "hardware": "marlinCD", "enabled": true },
+  { "id": "ledBottom", "hardware": "marlinXY", "enabled": true },
+  { "id": "ledTop", "hardware": "marlinAB", "enabled": true },
+  { "id": "vac1", "hardware": "marlinXY", "enabled": true },
+  { "id": "vac2", "hardware": "marlinXY", "enabled": true },
+  { "id": "vac3", "hardware": "marlinXY", "enabled": true },
+  { "id": "vac4", "hardware": "marlinXY", "enabled": true }
+]
