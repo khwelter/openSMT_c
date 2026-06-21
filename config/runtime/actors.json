@@ -14,7 +14,7 @@
     "id": "lightTop",
     "driver": "marlinAB",
     "deviceDriver": "ledTop",
-    "index": 1,
+    "index": 0,
     "minValue": 0,
     "maxValue": 1,
     "offValue": 0,
