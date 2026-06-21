@@ -7,8 +7,16 @@
 namespace opensmt {
 namespace drivers {
 
-GenericDeviceDriver::GenericDeviceDriver(std::string moduleId, std::shared_ptr<hw::IHardwareDriver> hardwareDriver)
-    : DeviceDriver(std::move(moduleId), std::move(hardwareDriver))
+GenericDeviceDriver::GenericDeviceDriver(
+    std::string moduleId,
+    std::shared_ptr<hw::IHardwareDriver> hardwareDriver,
+    float moveXYSlackThresholdMm,
+    float moveXYSlackCompensationMm)
+    : DeviceDriver(
+          std::move(moduleId),
+          std::move(hardwareDriver),
+          moveXYSlackThresholdMm,
+          moveXYSlackCompensationMm)
 {
 }
 

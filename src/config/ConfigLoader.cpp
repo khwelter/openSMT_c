@@ -125,6 +125,25 @@ bool readRequiredInt(
     return true;
 }
 
+bool readOptionalFloat(
+    const nlohmann::json& json,
+    const char* key,
+    float& outValue,
+    std::string& outError)
+{
+    if (!json.contains(key)) {
+        return true;
+    }
+
+    if (!json[key].is_number()) {
+        outError = std::string("Missing or invalid float key: ") + key;
+        return false;
+    }
+
+    outValue = json[key].get<float>();
+    return true;
+}
+
 bool readOptionalPosition3(
     const nlohmann::json& json,
     const char* key,
@@ -197,6 +216,8 @@ bool ConfigLoader::load(const std::string& rootConfigPath, AppConfig& outConfig,
     outConfig.referencePositions.posCamBot = {0.0f, 0.0f, 0.0f};
     outConfig.referencePositions.posDiscard = {0.0f, 0.0f, 0.0f};
     outConfig.referencePositions.posChange = {0.0f, 0.0f, 0.0f};
+    outConfig.motion.moveXYSlackThresholdMm = 1.0f;
+    outConfig.motion.moveXYSlackCompensationMm = 1.0f;
 
     const nlohmann::json& projectJson = rootJson["project"];
     if (!readOptionalPosition3WithAliases(
@@ -212,7 +233,14 @@ bool ConfigLoader::load(const std::string& rootConfigPath, AppConfig& outConfig,
         !readOptionalPosition3(projectJson, "posPark", outConfig.referencePositions.posPark, outError) ||
         !readOptionalPosition3(projectJson, "posCamBot", outConfig.referencePositions.posCamBot, outError) ||
         !readOptionalPosition3(projectJson, "posDiscard", outConfig.referencePositions.posDiscard, outError) ||
-        !readOptionalPosition3(projectJson, "posChange", outConfig.referencePositions.posChange, outError)) {
+        !readOptionalPosition3(projectJson, "posChange", outConfig.referencePositions.posChange, outError) ||
+        !readOptionalFloat(projectJson, "moveXYSlackThresholdMm", outConfig.motion.moveXYSlackThresholdMm, outError) ||
+        !readOptionalFloat(projectJson, "moveXYSlackCompensationMm", outConfig.motion.moveXYSlackCompensationMm, outError)) {
+        return false;
+    }
+
+    if (outConfig.motion.moveXYSlackThresholdMm < 0.0f || outConfig.motion.moveXYSlackCompensationMm < 0.0f) {
+        outError = "moveXYSlackThresholdMm and moveXYSlackCompensationMm must be >= 0";
         return false;
     }
 

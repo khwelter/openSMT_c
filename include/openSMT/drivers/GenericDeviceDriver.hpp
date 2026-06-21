@@ -10,7 +10,11 @@ namespace drivers {
 
 class GenericDeviceDriver : public DeviceDriver {
 public:
-    GenericDeviceDriver(std::string moduleId, std::shared_ptr<hw::IHardwareDriver> hardwareDriver);
+    GenericDeviceDriver(
+        std::string moduleId,
+        std::shared_ptr<hw::IHardwareDriver> hardwareDriver,
+        float moveXYSlackThresholdMm,
+        float moveXYSlackCompensationMm);
 
     bool moveXY(float xPos, float yPos, float speed) override;
     bool moveZ(float zPos, float speed) override;

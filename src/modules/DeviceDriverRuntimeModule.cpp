@@ -67,7 +67,11 @@ bool DeviceDriverRuntimeModule::start(const ModuleContext& context)
         }
 
         std::unique_ptr<drivers::DeviceDriver> deviceDriver =
-            std::make_unique<drivers::GenericDeviceDriver>(deviceConfig.id, hardwareIt->second);
+            std::make_unique<drivers::GenericDeviceDriver>(
+                deviceConfig.id,
+                hardwareIt->second,
+                appConfig_.motion.moveXYSlackThresholdMm,
+                appConfig_.motion.moveXYSlackCompensationMm);
 
         if (!deviceDriver->start(context.bus)) {
             std::fprintf(stderr, "[module][%s] failed to start device driver '%s'\n", moduleId_.c_str(), deviceConfig.id.c_str());

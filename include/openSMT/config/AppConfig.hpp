@@ -25,6 +25,11 @@ struct AppReferencePositionsConfig {
     Position3Config posChange;
 };
 
+struct MotionConfig {
+    float moveXYSlackThresholdMm;
+    float moveXYSlackCompensationMm;
+};
+
 struct ModuleConfig {
     std::string id;
     std::string type;
@@ -73,6 +78,7 @@ struct ActorConfig {
 struct AppConfig {
     std::string projectName;
     AppReferencePositionsConfig referencePositions;
+    MotionConfig motion;
     CommunicationConfig communication;
     std::vector<HardwareDriverConfig> hardwareDrivers;
     std::vector<DeviceDriverConfig> deviceDrivers;
