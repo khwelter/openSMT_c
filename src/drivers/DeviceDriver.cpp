@@ -168,14 +168,26 @@ void DeviceDriver::onFrame(const comm::Frame& frame)
         const hw::HardwareCommand homeCommand{moduleId_, "homeXYAB", "{}"};
         const hw::HardwareResponse response = hardware().execute(homeCommand);
         ok = response.ok;
-        if (!ok) {
+        if (response.ok) {
+            try {
+                resultJson = nlohmann::json::parse(response.payloadJson);
+            } catch (...) {
+                resultJson["rawResponse"] = response.payloadJson;
+            }
+        } else {
             error = response.error.empty() ? "homeXYAB rejected by driver" : response.error;
         }
     } else if (action == "homeZ") {
         const hw::HardwareCommand homeCommand{moduleId_, "homeZ", "{}"};
         const hw::HardwareResponse response = hardware().execute(homeCommand);
         ok = response.ok;
-        if (!ok) {
+        if (response.ok) {
+            try {
+                resultJson = nlohmann::json::parse(response.payloadJson);
+            } catch (...) {
+                resultJson["rawResponse"] = response.payloadJson;
+            }
+        } else {
             error = response.error.empty() ? "homeZ rejected by driver" : response.error;
         }
     } else if (action == "moveZ") {
